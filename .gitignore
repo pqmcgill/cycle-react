@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled output
+lib/
+
+# Deps
+node_modules/
+typings/
+
+# npm cache
+.npm

@@ -1,0 +1,28 @@
+{
+  "name": "cycle-react",
+  "version": "1.0.0",
+  "description": "A Cycle.js driver that treats React virtual DOM trees as sinks and pipes React events via sources",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
+    "xstream": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.40",
+    "@types/react-dom": "^16.0.4",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
+  },
+  "keywords": ["CycleJS", "React"],
+  "author": "Patrick McGill",
+  "license": "ISC"
+}

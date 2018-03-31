@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "noImplicitAny": false,
+      "removeComments": true,
+      "sourceMap": true,
+      "jsx": "react",
+      "jsxFactory": "h",
+      "allowSyntheticDefaultImports": true
+    },
+    "formatCodeOptions": {
+      "indentSize": 2,
+      "tabSize": 2
+    }
+  }
