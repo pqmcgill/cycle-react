@@ -10,7 +10,7 @@ export type PropsExtensions = {
 export function h<P>(
   type: React.ComponentClass<P> | string, 
   props?: (P & PropsExtensions) | string | Array<React.ReactElement<any>>, 
-  children?: string | Array<React.ReactElement<any>>
+  ...children: Array<React.ReactElement<any>>
 ): React.ReactElement<P> {
   // const incorporatedProps = incorporateHandlers(props);
   if (props === undefined && children === undefined) {

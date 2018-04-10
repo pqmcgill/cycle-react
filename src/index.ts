@@ -1,5 +1,5 @@
 import { makeReactDriver } from './makeReactDriver';
-import { ReactSource } from './reactSource';
+import { ReactSource } from './ReactSource';
 import { h } from './h';
 
 export {

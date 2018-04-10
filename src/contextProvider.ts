@@ -1,6 +1,6 @@
 import { h } from './h';
 import * as React from 'react';
-import { string as PropTypesString, Requireable } from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { getHandlers, Handlers } from './handlers';
 
 export interface ProviderProps {
@@ -34,9 +34,6 @@ export function incorporateHandlers(scopedSelector: string): Object {
 }
 
 export default class IsolatedScopeProvider extends React.Component<ProviderProps, any> {
-  static childContextTypes = {
-    scope: PropTypesString
-  }
   
   getChildContext(): ProviderContext {
     return {
@@ -50,9 +47,6 @@ export default class IsolatedScopeProvider extends React.Component<ProviderProps
 }
 
 export class Eventable extends React.Component<EventableProps, ProviderContext> {
-  static contextTypes = {
-    scope: PropTypesString
-  };
 
   private type: React.ComponentClass<any> | undefined;
 
