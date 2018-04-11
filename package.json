@@ -5,8 +5,8 @@
   "main": "./lib/cycle-react",
   "types": "./lib/index.d.ts",
   "peerDependencies": {
-    "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "react": "16.3.0^",
+    "react-dom": "16.3.0^"
   },
   "dependencies": {
     "@types/prop-types": "^15.5.2",

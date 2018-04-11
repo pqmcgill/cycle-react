@@ -1,7 +1,7 @@
 import xs, { Stream } from 'xstream';
 import { createElement, ReactElement } from 'react';
 import { getHandler } from './handlers';
-import Provider from './contextProvider';
+import { ScopeProvider } from './contextProvider';
 import { DocumentDOMSource } from './DocumentDOMSource';
 
 export interface ReactSource {
@@ -45,7 +45,7 @@ export class MainReactSource implements ReactSource {
 
   public isolateSink(sink: Stream<ReactElement<any>>, namespace: string): Stream<ReactElement<any>> {
     return sink.map(vtree => {
-      return createElement(Provider, { scope: namespace }, vtree);
+      return createElement(ScopeProvider, { value: namespace }, vtree);
     })
   }
 }

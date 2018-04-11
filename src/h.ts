@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getHandlers } from './handlers';
-import { Eventable, EventableProps } from './contextProvider';
+import { ScopeConsumer } from './contextProvider';
 
 export type PropsExtensions = {
   selector: string;
@@ -12,7 +12,6 @@ export function h<P>(
   props?: (P & PropsExtensions) | string | Array<React.ReactElement<any>>, 
   ...children: Array<React.ReactElement<any>>
 ): React.ReactElement<P> {
-  // const incorporatedProps = incorporateHandlers(props);
   if (props === undefined && children === undefined) {
     return hCP(type, {} as (P & PropsExtensions), []);
   }
@@ -59,14 +58,14 @@ function internalH<P>(
 ): React.ReactElement<P> {
   if (typeof children === 'string') {
     if (props && props.selector) {
-      return React.createElement(Eventable as React.ComponentClass, { ...props, type } as React.Props<P>, children) as React.ReactElement<P>;
+      return React.createElement(ScopeConsumer, { ...props, type } as React.Props<P>, children) as React.ReactElement<P>;
     } else {
       return React.createElement(type as React.ComponentClass<P>, (props as (P & PropsExtensions)), children);
     }
   } else {
     if (props && props.selector) {
       let newProps = { type, ...props };
-      return React.createElement(Eventable as React.ComponentClass, { ...props, type } as React.Props<P>, ...children) as React.ReactElement<P>;
+      return React.createElement(ScopeConsumer, { ...props, type } as React.Props<P>, ...children) as React.ReactElement<P>;
     } else {
       return React.createElement(type as React.ComponentClass<P>, (props as (P & PropsExtensions)), ...children);
     }
