@@ -2,7 +2,9 @@ import xs, { Stream, Producer } from 'xstream';
 import { ReactSource } from './ReactSource';
 
 export class DocumentDOMSource implements ReactSource {
-  public select(selector: string): Stream<Event> {
+  constructor() {}
+
+  public select(selector: string): DocumentDOMSource {
     return this;
   }
 

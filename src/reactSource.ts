@@ -22,8 +22,8 @@ export class MainReactSource implements ReactSource {
     return this.scope ? `${this.selector}_${this.scope}` : this.selector;
   }
 
-  public select(selector: string): ReactSource;
-  public select(selector: string): DocumentDOMSource {
+  public select(selector: string): DocumentDOMSource;
+  public select(selector: string): ReactSource {
     if (selector === 'document') {
       return new DocumentDOMSource();
     } else {
