@@ -1,10 +1,22 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { getHandlers } from './handlers';
 import { ScopeConsumer } from './contextProvider';
 
+declare module 'react' {
+  interface HTMLAttributes<T> {
+    selector?: string
+  }
+
+  interface SVGAttributes<T> {
+    selector?: string
+  }
+}
+
+export { ReactElement };
+
 export type PropsExtensions = {
-  selector: string;
-  type?: React.ComponentClass<any> | string
+  selector?: string;
+  _elementType?: React.ComponentClass<any> | string
 }
 
 export function h<P>(
@@ -56,18 +68,19 @@ function internalH<P>(
   props: React.Props<P> & PropsExtensions,  
   children: string | Array<React.ReactElement<any>>,
 ): React.ReactElement<P> {
-  if (typeof children === 'string') {
+  const _children = new Array().concat(children);
     if (props && props.selector) {
-      return React.createElement(ScopeConsumer, { ...props, type } as React.Props<P>, children) as React.ReactElement<P>;
+      const newProps = { ...props, _elementType: type };
+      return React.createElement(
+        ScopeConsumer, 
+        newProps as React.Props<P>, 
+        ..._children
+      ) as React.ReactElement<P>;
     } else {
-      return React.createElement(type as React.ComponentClass<P>, (props as (P & PropsExtensions)), children);
+      return React.createElement(
+        type as React.ComponentClass<P>, 
+        (props as (P & PropsExtensions)), 
+        ..._children
+      );
     }
-  } else {
-    if (props && props.selector) {
-      let newProps = { type, ...props };
-      return React.createElement(ScopeConsumer, { ...props, type } as React.Props<P>, ...children) as React.ReactElement<P>;
-    } else {
-      return React.createElement(type as React.ComponentClass<P>, (props as (P & PropsExtensions)), ...children);
-    }
-  }
 }

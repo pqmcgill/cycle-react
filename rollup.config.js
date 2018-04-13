@@ -7,7 +7,7 @@ export default {
   output: [{
     name: 'CycleReact',
     file: 'lib/cycle-react.js',
-    format: 'umd',
+    format: 'es',
     globals: {
       'react': 'React',
       'react-dom': 'ReactDOM',
@@ -20,8 +20,10 @@ export default {
     'react-dom'
   ],
   plugins: [
-    // resolve(),
-    // commonjs(),
+    resolve({
+      jsnext: true
+    }),
+    commonjs(),
     typescript({
       declaration: true
     })

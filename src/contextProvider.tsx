@@ -1,4 +1,3 @@
-import { h } from './h';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Eventable } from './Eventable';
@@ -24,11 +23,11 @@ const { Provider, Consumer } = React.createContext(null);
 
 export { Provider as ScopeProvider };
 
-export const ScopeConsumer = () => {
+export const ScopeConsumer = (props) => {
   return (
     <Consumer>
       {( scope ) => (
-        <Eventable scope={ scope } />
+        <Eventable scope={ scope } {...props} />
       )}
     </Consumer>
   )
