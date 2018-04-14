@@ -2,16 +2,22 @@ import { h } from './h';
 import * as React from 'react';
 
 function createTagFunction(tagName: string): Function {
-  return function hyperscript(props?: any, children?: any) {
-    const hasProps = typeof props !== 'undefined';
-    const hasChildren = typeof children !== 'undefined';
-    if (hasProps && hasChildren) {
-      return h(tagName, props, ...children);
-    } else if (hasProps) {
-      return h(tagName, props);
+  return function hyperscript(a?: any, b?: any) {
+    const hasB = typeof b !== 'undefined';
+    if (!hasB) {
+      if (typeof a === 'function' || typeof a === 'number' || typeof a === 'string') {
+        return h(tagName, {}, a);
+      } else if (Array.isArray(a)) {
+        return h(tagName, {}, ...a);
+      }
     } else {
-      return h(tagName, {});
+      if (typeof b === 'function' || typeof b === 'number' || typeof b === 'string') {
+        return h(tagName, a, b);
+      } else if (Array.isArray(b)) {
+        return h(tagName, a, ...b);
+      }
     }
+    throw new Error(`incorrect use of ${tagName} helper`);
   }
 }
 
