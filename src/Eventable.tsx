@@ -40,18 +40,18 @@ export class Eventable extends React.Component<EventableProps> {
     }
     const handlerProps = this.incorporateHandlers(finalScope);
     this._elementType = props._elementType;
-    const mappedProps = { 
-      ...props, 
+    const mappedProps = {
+      ...props,
       ...handlerProps,
     };
     delete mappedProps._elementType;
     this.mappedProps = mappedProps;
   }
 
-  render(): React.ReactNode {
+  public render(): React.ReactNode {
     return React.createElement(
-      this._elementType, 
-      this.mappedProps, 
+      this._elementType,
+      this.mappedProps,
       this.props.children
     )
   }

@@ -44,8 +44,8 @@ export class MainReactSource implements ReactSource {
   }
 
   public isolateSink(sink: Stream<ReactElement<any>>, namespace: string): Stream<ReactElement<any>> {
-    return sink.map(vtree => {
-      return createElement(ScopeProvider, { value: namespace }, vtree);
-    })
+    return sink.map(vtree =>
+      createElement(ScopeProvider, { value: namespace }, vtree)
+    )
   }
 }

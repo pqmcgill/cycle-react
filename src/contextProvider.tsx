@@ -9,7 +9,7 @@ declare module "react" {
     children?: React.ReactNode;
   }>;
   type Consumer<T> = React.ComponentType<{
-    children: (value: T) => React.ReactNode;
+    children(value: T): React.ReactNode;
     unstable_observedBits?: number;
   }>;
   interface Context<T> {
@@ -23,12 +23,10 @@ const { Provider, Consumer } = React.createContext(null);
 
 export { Provider as ScopeProvider };
 
-export const ScopeConsumer = (props) => {
-  return (
-    <Consumer>
-      {( scope ) => (
-        <Eventable scope={ scope } {...props} />
-      )}
-    </Consumer>
-  )
-}
+export const ScopeConsumer = (props) => (
+  <Consumer>
+    {( scope ) => (
+      <Eventable scope={ scope } {...props} />
+    )}
+  </Consumer>
+);
