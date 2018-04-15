@@ -2,15 +2,15 @@ import React, { ReactElement } from 'react';
 import { getHandlers } from './handlers';
 import { ScopeConsumer } from './contextProvider';
 
-declare module 'react' {
-  interface HTMLAttributes<T> {
-    selector?: string
-  }
+// declare module 'react' {
+//   interface HTMLAttributes<T> {
+//     selector?: string
+//   }
 
-  interface SVGAttributes<T> {
-    selector?: string
-  }
-}
+//   interface SVGAttributes<T> {
+//     selector?: string
+//   }
+// }
 
 export { ReactElement };
 
