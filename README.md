@@ -190,7 +190,7 @@ function MyComponent(sources) {
 }
 ```
 
-Notice the use of the `selector` prop. This prop is special and allows Cycle React to wire up the sources properly for subscribing to events. React Cycle provides a React object on the sources map. The React source has a public method `select(selector: string)` that will return an instance of `ReactSource`. `ReactSource` has a public method `event(eventType: string): Stream<any>`. The returned Stream from calling `event(eventType)` emits values when the corresponding prop named `on[EventType]` is called on the component with the `selector` prop.
+Notice the use of the `selector` prop. This prop is special and allows Cycle React to wire up the sources properly for subscribing to events. React Cycle provides a React object on the sources map. The React source has a public method `select(selector: string)` that will return an instance of `ReactSource`. `ReactSource` has a public method `event(eventType: string): Stream<any>`. The returned Stream from calling `event(eventType)` emits values when the corresponding prop named `on[EventType]` is called on the component with the `selector` prop. This provides an excellent means of interoperability between pure React Components and Cycle.js apps. 
 
 The above code works because `button` has a prop named `onClick`. `onClick` is a built-in prop, but we're not limited to built-in props. Take the following example which uses an existing React Component with a props based callback API.
 
@@ -222,7 +222,15 @@ function Main(sources) {
 }
 ```
 
-This provides an excellent means of interoperability between pure React Components and Cycle.js apps. 
+### Isolation
+
+When using `@cycle/isolate` to provide a scope to a component, 
+
+```
+isolate(MyComponent, 'scoped')(sources)
+```
+
+any cycle-react events that the component subscribes to will also be scoped to that component. This mitigates the risk for namespace collisions when using the selector prop, and allows for the same component to be reused multiple times on the same page.
 
 ### TODO: provide more detailed documentation for use with Typescript
 ### TODO: provide example usages in the src code
