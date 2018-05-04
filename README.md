@@ -226,7 +226,7 @@ function Main(sources) {
 
 When using `@cycle/isolate` to provide a scope to a component, 
 
-```
+```jsx
 isolate(MyComponent, 'scoped')(sources)
 ```
 
