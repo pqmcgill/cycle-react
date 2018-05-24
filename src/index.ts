@@ -5,6 +5,7 @@ import hh, { HyperScriptHelperFn } from './hyperscriptHelpers';
 
 export { makeReactDriver } from './makeReactDriver';
 export { ReactSource } from './ReactSource';
+export { mockReactSource, MockedReactSource } from './mockReactSource';
 export { h, ReactElement } from './h';
 export const a: HyperScriptHelperFn = hh.a;
 export const abbr: HyperScriptHelperFn = hh.abbr;
