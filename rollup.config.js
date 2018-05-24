@@ -8,7 +8,7 @@ export default {
   output: [{
     name: 'CycleReact',
     file: 'lib/cycle-react.js',
-    format: 'es',
+    format: 'cjs',
     globals: {
       'react': 'React',
       'react-dom': 'ReactDOM',
