@@ -8,12 +8,12 @@ export default {
   output: [{
     name: 'CycleReact',
     file: 'lib/cycle-react.js',
-    format: 'cjs',
-    globals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM',
-      'xstream': 'xs'
-    },
+    format: 'es',
+    // globals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM',
+    //   'xstream': 'xs'
+    // },
   }],
   external: [
     'xstream',
@@ -28,6 +28,6 @@ export default {
     typescript({
       declaration: true
     }),
-    uglify()
+    // uglify()
   ]
 };

@@ -1,6 +1,6 @@
 import { Stream } from 'xstream';
 import { ReactElement } from 'react';
-import { render } from 'react-dom';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { MainReactSource, ReactSource } from './ReactSource';
 
 export type Driver = (vtree$: Stream<ReactElement<any>>) => ReactSource;
@@ -18,7 +18,10 @@ export function makeReactDriver(element: string | Element): Driver {
         render(
           vtree,
           _el
-        )
+        );
+      },
+      complete() {
+        unmountComponentAtNode(_el);
       }
     });
 

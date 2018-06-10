@@ -7,11 +7,17 @@ export type EventableProps = {
   _elementType?: React.ComponentClass<any>;
 }
 
-export class Eventable extends React.Component<EventableProps> {
+export type EventableState = {
+  mappedProps: any,
+  handlerProps: any,
+  _elementType: any
+}
+
+export class Eventable extends React.Component<EventableProps, EventableState> {
 
   private _elementType: React.ComponentClass<any> | undefined;
 
-  private mappedProps: EventableProps;
+  private handlerProps: any;
 
   private incorporateHandlers = function incorporateHandlers(scopedSelector: string): Object {
     const handlers: Handlers = getHandlers(scopedSelector);
@@ -38,20 +44,28 @@ export class Eventable extends React.Component<EventableProps> {
     } else {
       finalScope = props.selector;
     }
-    const handlerProps = this.incorporateHandlers(finalScope);
-    this._elementType = props._elementType;
+    this.state = {
+      handlerProps: this.incorporateHandlers(finalScope),
+      mappedProps: {},
+      _elementType: props._elementType
+    };
+  }
+
+  static getDerivedStateFromProps(props, state) {
     const mappedProps = {
       ...props,
-      ...handlerProps,
+      ...state.handlerProps,
     };
     delete mappedProps._elementType;
-    this.mappedProps = mappedProps;
+    return {
+      mappedProps
+    };    
   }
 
   public render(): React.ReactNode {
     return React.createElement(
-      this._elementType,
-      this.mappedProps,
+      this.state._elementType,
+      this.state.mappedProps,
       this.props.children
     )
   }
