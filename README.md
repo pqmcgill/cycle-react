@@ -110,7 +110,7 @@ You can even use `jsx`! Just point your jsx configuration to use the `h()` funct
 
 ### Babel
 ```jsx
-/** @jsx/h */
+/** @jsx h */
 import { h } from '@pqmcgill/cycle-react';
 
 function Main(sources) {
