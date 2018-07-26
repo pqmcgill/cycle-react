@@ -1,3 +1,6 @@
+# DEPRECATED #
+This library was an experiment in combining the best of Cycle.js with the best of React.js. A few months since publishing this library, An officially supported package [@cycle/react](https://github.com/cyclejs/react) was released that solves the exact same problems. Here's an excellent [blog post](https://staltz.com/use-react-in-cyclejs-and-vice-versa.html) that showcases their work. Their implementation is strikingly similar to my own, and I'm quite proud of that fact! This library still functions just as well, but I will no longer be maintaining this library as I've got a full plate of other projects to work on. I highly recommend using the official package if you're needing to rely on long-lived support. Thanks!
+
 # cycle-react
 Cycle React is a Cycle.js driver that renders React virtual dom elements via sinks, and emits React events via sources.
 
